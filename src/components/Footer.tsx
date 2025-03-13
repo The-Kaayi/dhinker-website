@@ -1,6 +1,7 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
-import { Brain, Linkedin, Instagram, Twitter } from 'lucide-react';
+import { Linkedin, Instagram, Twitter } from 'lucide-react';
+import appLogo from "../../images/app-logo.png"
 
 export default function Footer() {
   return (
@@ -9,8 +10,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <Link to="/" className="flex items-center space-x-2">
-              <Brain className="h-8 w-8 text-primary" />
-              <span className="font-heading text-2xl">DHINKER</span>
+            <img
+                src={appLogo}
+                alt="App Logo"
+                className="h-5 w-25"
+              />
             </Link>
             <p className="text-light/80">
               Empowering businesses through innovative AI solutions and education.
@@ -22,28 +26,29 @@ export default function Footer() {
             <ul className="space-y-2">
               <li><Link to="/ai-solutions" className="text-light/80 hover:text-primary">AI Solutions</Link></li>
               <li><Link to="/education" className="text-light/80 hover:text-primary">Education</Link></li>
-              <li><Link to="/case-studies" className="text-light/80 hover:text-primary">Case Studies</Link></li>
+              <li><Link to="/about" className="text-light/80 hover:text-primary">About</Link></li>
+              <li><Link to="/contact" className="text-light/80 hover:text-primary">Contact</Link></li>
             </ul>
           </div>
 
           <div>
             <h3 className="font-heading text-xl mb-4">Contact</h3>
             <ul className="space-y-2">
-              <li className="text-light/80">contact@dhinker.ai</li>
-              <li className="text-light/80">+1 (555) 123-4567</li>
+              <li className="text-light/80">info@dhinker.com</li>
+              <li className="text-light/80">+91 8891304460</li>
             </ul>
           </div>
 
           <div>
             <h3 className="font-heading text-xl mb-4">Follow Us</h3>
             <div className="flex space-x-4">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-light/80 hover:text-primary">
+              <a href="https://www.linkedin.com/company/dhinker" target="_blank" rel="noopener noreferrer" className="text-light/80 hover:text-primary">
                 <Linkedin className="h-6 w-6" />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-light/80 hover:text-primary">
+              <a href="https://www.instagram.com/dhinker" target="_blank" rel="noopener noreferrer" className="text-light/80 hover:text-primary">
                 <Instagram className="h-6 w-6" />
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-light/80 hover:text-primary">
+              <a href="https://x.com/dhinker" target="_blank" rel="noopener noreferrer" className="text-light/80 hover:text-primary">
                 <Twitter className="h-6 w-6" />
               </a>
             </div>
