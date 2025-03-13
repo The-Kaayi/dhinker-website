@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Building2,
   BarChart as ChartBar,
@@ -5,56 +6,73 @@ import {
   Users,
   Rocket,
 } from "lucide-react";
+import "./IndustriesWeServe.css";
+
+const sectionData = [
+  {
+    icon: Building2,
+    title: "Finance",
+    description: "AI-powered financial analysis and risk assessment.",
+  },
+  {
+    icon: ChartBar,
+    title: "Healthcare",
+    description: "Advanced diagnostic and patient care solutions.",
+  },
+  {
+    icon: Cpu,
+    title: "Manufacturing",
+    description: "Smart automation and predictive maintenance.",
+  },
+  {
+    icon: Users,
+    title: "Education",
+    description:
+      "AI-driven personalized learning and administrative efficiency.",
+  },
+  {
+    icon: Rocket,
+    title: "Agriculture",
+    description: "Precision farming and crop monitoring with AI technology.",
+  },
+  {
+    icon: Building2,
+    title: "E-Commerce & Retail",
+    description:
+      "Enhancing customer experience and optimizing inventory management.",
+  },
+];
 
 const IndustriesWeServe = () => {
-  const sectionData = [
-    {
-      icon: Building2,
-      title: "Finance",
-      description: "AI-powered financial analysis and risk assessment.",
-    },
-    {
-      icon: ChartBar,
-      title: "Healthcare",
-      description: "Advanced diagnostic and patient care solutions.",
-    },
-    {
-      icon: Cpu,
-      title: "Manufacturing",
-      description: "Smart automation and predictive maintenance.",
-    },
-    {
-      icon: Building2,
-      title: "E-Commerce & Retail",
-      description:
-        "Enhancing customer experience and optimizing inventory management.",
-    },
-    {
-      icon: Users,
-      title: "Education",
-      description:
-        "AI-driven personalized learning and administrative efficiency.",
-    },
-    {
-      icon: Rocket,
-      title: "Agriculture",
-      description: "Precision farming and crop monitoring with AI technology.",
-    },
-  ];
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
     <section className="py-20 px-4 bg-gradient-to-b from-dark via-dark/50 to-dark">
-      <div className="container mx-auto">
-        <h2 className="text-4xl md:text-5xl font-heading text-center mb-16">
-          Industries We Serve
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="container mx-auto flex flex-row justify-between items-center gap-8">
+        {/* Beehive Layout */}
+        <div className="beehive">
           {sectionData.map((item, index) => (
-            <div key={index} className="card card-hover">
-              <item.icon className="w-12 h-12 text-secondary mb-4" />
-              <h3 className="text-2xl font-heading mb-4">{item.title}</h3>
-              <p className="text-light/80">{item.description}</p>
+            <div
+              key={index}
+              className={`hexagon cursor-pointer transition-all duration-300 ${
+                activeIndex === index ? "text-primary" : "text-light"
+              }`}
+              onMouseEnter={() => setActiveIndex(index)}
+            >
+              <item.icon className="w-10 h-10 text-black" />
+              <p className="text-sm font-bold text-black">{item.title}</p>
             </div>
           ))}
+        </div>
+
+        {/* Description Panel (Pushed to Right) */}
+        <div className="max-w p-6 bg-dark ext-white ml-auto m-auto">
+          <h3 className="text-2xl font-bold mb-8">
+            {sectionData[activeIndex].title}
+          </h3>
+          <p className="text-light/80">
+            {sectionData[activeIndex].description}
+          </p>
         </div>
       </div>
     </section>

@@ -1,0 +1,60 @@
+.beehive {
+  display: grid;
+  grid-template-columns: repeat(3, 120px);
+  gap: 100px;
+  align-items: center;
+  justify-content: center;
+  width: 800px;
+}
+
+.hexagon {
+  width: 170px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background-color: #f2f2f2;
+  transition: background-color 0.3s ease-in-out;
+  position: relative;
+}
+
+.hexagon:hover {
+  background-color: rgb(46, 204, 113);
+}
+
+.hexagon:nth-child(4),
+.hexagon:nth-child(6) {
+  transform: translateY(20px);
+}
+
+.hexagon:nth-child(2) {
+  transform: translateY(160px) translateX(-130px);
+}
+
+.hexagon:nth-child(5) {
+  transform: translateY(20px) translateX(-40px);
+}
+
+.hexagon:nth-child(3) {
+  transform: translateY(0px) translateX(-260px);
+}
+
+.hexagon:nth-child(6) {
+  transform: translateY(-140px) translateX(-170px);
+}
+
+.hexagon p {
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+}
+
+.hexagon svg {
+  width: 32px;
+  height: 32px;
+  color: black;
+}

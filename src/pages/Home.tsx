@@ -2,11 +2,8 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   Brain,
-  Cpu,
-  Building2,
   Rocket,
   Users,
-  BarChart as ChartBar,
 } from "lucide-react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
