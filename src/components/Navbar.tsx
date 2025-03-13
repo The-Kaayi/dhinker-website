@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Brain } from 'lucide-react';
 import { cn } from '../lib/utils';
@@ -8,7 +8,7 @@ const navigation = [
   { name: 'AI Solutions', href: '/ai-solutions' },
   { name: 'Education', href: '/education' },
   { name: 'About', href: '/about' },
-  { name: 'Case Studies', href: '/case-studies' },
+  // { name: 'Case Studies', href: '/case-studies' },
   { name: 'Contact', href: '/contact' },
 ];
 
