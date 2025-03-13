@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-dark text-light font-body;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading text-light;
+  }
+  p {
+    @apply text-light;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-dark hover:bg-opacity-90 hover:shadow-[0_0_15px_rgba(46,204,113,0.5)];
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-light hover:bg-opacity-90 hover:shadow-[0_0_15px_rgba(145,39,243,0.5)];
+  }
+  
+  .card {
+    @apply bg-dark/50 backdrop-blur-sm rounded-xl p-6 transition-all duration-300 border border-light/10;
+  }
+  
+  .card-hover {
+    @apply hover:scale-105 hover:shadow-[0_0_30px_rgba(46,204,113,0.2)] hover:border-primary/50;
+  }
+}
