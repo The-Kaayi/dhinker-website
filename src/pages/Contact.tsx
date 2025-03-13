@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
+import React, { useEffect, useState } from "react";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
   useEffect(() => {
@@ -16,66 +16,68 @@ export default function Contact() {
     gsap.registerPlugin(ScrollTrigger);
 
     // Set initial state
-    gsap.set('.contact-section', { opacity: 1, y: 0 });
+    gsap.set(".contact-section", { opacity: 1, y: 0 });
 
     // Create timeline for contact section
     const timeline = gsap.timeline({
       scrollTrigger: {
-        trigger: '.contact-section',
-        start: 'top bottom-=100',
-        toggleActions: 'play none none reverse'
-      }
+        trigger: ".contact-section",
+        start: "top bottom-=100",
+        toggleActions: "play none none reverse",
+      },
     });
 
-    timeline.from('.contact-section', {
+    timeline.from(".contact-section", {
       y: 50,
       opacity: 0,
       duration: 0.8,
       stagger: 0.2,
-      ease: 'power2.out',
+      ease: "power2.out",
     });
 
     // Cleanup function
     return () => {
       timeline.kill();
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       // Reset styles on cleanup
-      gsap.set('.contact-section', { opacity: 1, y: 0 });
+      gsap.set(".contact-section", { opacity: 1, y: 0 });
     };
   }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const contactInfo = [
     {
       icon: Mail,
-      title: 'Email',
-      info: 'contact@dhinker.ai',
-      link: 'mailto:contact@dhinker.ai'
+      title: "Email",
+      info: "info@dhinker.com",
+      link: "mailto:info@dhinker.com",
     },
     {
       icon: Phone,
-      title: 'Phone',
-      info: '+1 (555) 123-4567',
-      link: 'tel:+15551234567'
+      title: "Phone",
+      info: "+91 8891304460",
+      link: "tel:+91 8891304460",
     },
     {
       icon: MapPin,
-      title: 'Address',
-      info: '123 AI Street, Tech City, TX 12345',
-      link: 'https://maps.google.com'
-    }
+      title: "Address",
+      info: "123 AI Street, Tech City, TX 12345",
+      link: "https://maps.google.com",
+    },
   ];
 
   return (
@@ -110,7 +112,7 @@ export default function Contact() {
               placeholder="Your Name"
               value={formData.name}
               onChange={handleChange}
-              className="input"
+              className="input w-full py-3 px-4 rounded-md text-black"
             />
             <input
               type="email"
@@ -118,7 +120,7 @@ export default function Contact() {
               placeholder="Your Email"
               value={formData.email}
               onChange={handleChange}
-              className="input"
+              className="input w-full py-3 px-4 rounded-md text-black"
             />
             <input
               type="text"
@@ -126,14 +128,14 @@ export default function Contact() {
               placeholder="Subject"
               value={formData.subject}
               onChange={handleChange}
-              className="input"
+              className="input w-full py-3 px-4 rounded-md text-black"
             />
             <textarea
               name="message"
               placeholder="Your Message"
               value={formData.message}
               onChange={handleChange}
-              className="textarea"
+              className="input w-full py-3 px-4 rounded-md text-black"
             />
           </div>
           <button type="submit" className="btn btn-primary w-full">
