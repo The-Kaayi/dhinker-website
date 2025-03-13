@@ -44,19 +44,38 @@ export default function Contact() {
     };
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
+
+    const payload = {
+      username: "Contact Form Bot",
+      content: `**New Contact Form Submission**\n\`\`\`\nName: ${formData.name}\nEmail: ${formData.email}\nSubject: ${formData.subject}\nMessage: ${formData.message}\n\`\`\``,
+    };
+
+    const webhookUrl = import.meta.env.VITE_DISCORD_WEBHOOK;
+
+    try {
+      const response = await fetch(webhookUrl || "", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        console.log("Message sent to Discord successfully!");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        console.log("Failed to send message to Discord.");
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+    }
   };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const contactInfo = [
@@ -113,6 +132,7 @@ export default function Contact() {
               value={formData.name}
               onChange={handleChange}
               className="input w-full py-3 px-4 rounded-md text-black"
+              required
             />
             <input
               type="email"
@@ -121,6 +141,7 @@ export default function Contact() {
               value={formData.email}
               onChange={handleChange}
               className="input w-full py-3 px-4 rounded-md text-black"
+              required
             />
             <input
               type="text"
@@ -129,6 +150,7 @@ export default function Contact() {
               value={formData.subject}
               onChange={handleChange}
               className="input w-full py-3 px-4 rounded-md text-black"
+              required
             />
             <textarea
               name="message"
@@ -136,6 +158,7 @@ export default function Contact() {
               value={formData.message}
               onChange={handleChange}
               className="input w-full py-3 px-4 rounded-md text-black"
+              required
             />
           </div>
           <button type="submit" className="btn btn-primary w-full">
