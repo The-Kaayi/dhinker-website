@@ -165,7 +165,7 @@ export default function Home() {
         </div>
       </section>
 
-      <IndustriesWeServe />
+      {/* <IndustriesWeServe /> */}
     </div>
   );
 }
